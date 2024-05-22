@@ -40,15 +40,15 @@ function appendItemstoShoppingListEl(item){
     // shoppingListEl.innerHTML += `<li> ${itemValue} </li> `
     let itemID = item[0];
     let itemValue = item[1];
-    let newEl = document.createElement("li");
-    newEl.textContent = itemValue;
-
-    newEl.addEventListener("dblclick", function(){
+    if(itemValue!=""){
+        let newEl = document.createElement("li");
+        newEl.textContent = itemValue;
+        newEl.addEventListener("dblclick", function(){
         let exactLocation = ref(database, `shoppingList/${itemID}`);
         remove(exactLocation);
-    })
-
+        })
     shoppingListEl.append(newEl);
+    }
 }
 
 
